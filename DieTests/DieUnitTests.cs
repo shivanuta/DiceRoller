@@ -42,5 +42,22 @@ namespace DieTests
             d.NumSides.Should().Be(8);
             d.CurrentSide.Should().BeInRange(1, 8);
         }
+
+
+        [TestMethod]
+        public void NumSidesShouldNotBeNegative()
+        {
+            // not implemented
+        }
+
+        [TestMethod]
+        public void RollSetSideCorrectly()
+        {
+            for (int i = 0; i < 100; i++)
+            {
+                def.Roll();
+                def.CurrentSide.Should().BeInRange(1, 6);
+            }
+        }
     }
 }
