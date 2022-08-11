@@ -7,15 +7,12 @@ namespace DiceRoller.Models
     public class Die
     {
         //name ,type,or colout of the die
-
-        public String Name { get; set; }
+        public string Name { get; set; }
 
         //how many sides are the die
-
         public int NumSides { get; set; }
 
         //which number is currently up
-
         public int CurrentSide { get; set; }
 
         public Die()
@@ -30,6 +27,12 @@ namespace DiceRoller.Models
             NumSides = numSides;
             Name = "d" + numSides;
             Roll();
+        }
+
+        public void SetSideUp(int newSideUp)
+        {
+            if (newSideUp >= 1 && newSideUp <= NumSides)
+                this.CurrentSide = newSideUp;
         }
         public void Roll()
         {

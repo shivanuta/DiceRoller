@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiceRoller", "DiceRoller\Di
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DieTests", "DieTests\DieTests.csproj", "{73959B5F-222A-48E7-8A41-16486E02340A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UITest", "UITest\UITest.csproj", "{736E2807-4ACB-4DD4-AF6A-AE8BD24AFF98}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{73959B5F-222A-48E7-8A41-16486E02340A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73959B5F-222A-48E7-8A41-16486E02340A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{73959B5F-222A-48E7-8A41-16486E02340A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{736E2807-4ACB-4DD4-AF6A-AE8BD24AFF98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{736E2807-4ACB-4DD4-AF6A-AE8BD24AFF98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{736E2807-4ACB-4DD4-AF6A-AE8BD24AFF98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{736E2807-4ACB-4DD4-AF6A-AE8BD24AFF98}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
