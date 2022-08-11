@@ -59,9 +59,19 @@ namespace DieTests
             }
         }
         [TestMethod]
-        public void DieHasCustomName()
+        [DataRow("d3", 3)]
+        [DataRow("d4", 4)]
+        [DataRow("d8", 8)]
+        [DataRow("d10", 10)]
+        [DataRow("d12", 12)]
+        [DataRow("d20", 20)]
+        public void DieHasCustomName(string name, int sides)
         {
-            //not implemented
+            Die d = new Die(name, sides);
+            d.Name.Should().Be(name);
+            d.NumSides.Should().Be(sides);
+            d.CurrentSide.Should().BeInRange(1, sides);
+
         }
         [TestMethod]
         [DataRow(3, 2)]
@@ -73,7 +83,7 @@ namespace DieTests
         public void SetSideUpChangesSide(int sides, int newSide)
         {
             Die d = new Die(sides);
-            //d.SetSide(newSide);
+            d.SetSide(newSide);
             d.CurrentSide.Should().Be(newSide);
         }
         [TestMethod]
@@ -86,14 +96,21 @@ namespace DieTests
         public void SetSideUpSetsValidSide(int sides, int newSide)
         {
             Die d = new Die(sides);
-            //d.SetSide(newSide);
-            d.CurrentSide.Should().Be(newSide);
+            d.SetSide(newSide);
+            d.CurrentSide.Should().BeInRange(1, sides);
         }
 
         [TestMethod]
-        public void NumSidesShouldNotBeNegative()
+        [DataRow(3)]
+        [DataRow(4)]
+        [DataRow(8)]
+        [DataRow(10)]
+        [DataRow(12)]
+        [DataRow(20)]
+        public void NumSidesShouldNotBeNegative(int sides)
         {
-            // not implemented
+            Die d = new Die(sides);
+            d.NumSides.Should().BeGreaterThan(0);
         }
 
         [TestMethod]

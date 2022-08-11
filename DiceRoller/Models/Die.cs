@@ -28,6 +28,16 @@ namespace DiceRoller.Models
             Name = "d" + numSides;
             Roll();
         }
+        public Die(String name, int numSides)
+        {
+            NumSides = numSides;
+            Name = name;
+            Roll();
+        }
+        public void SetSide(int newSides)
+        {
+            CurrentSide = newSides;
+        }
 
         public void SetSideUp(int newSideUp)
         {
