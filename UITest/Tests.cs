@@ -102,8 +102,7 @@ namespace UITest
         [Category("UI")]
         public void RollButtonAreDisplayed()
         {
-            AppResult[] results = app.Query(c => c.Class("UIButton").Property("text").Like("Display * results*"));
-
+            AppResult[] results = app.Query(c => c.Property("text").Like("Display * results*"));
             Assert.IsTrue(results.Length == 2);
         }
     }

@@ -14,12 +14,12 @@ namespace DiceRoller
         {
             InitializeComponent();
         }
-
-        public void DisplayOne()
+        public void Button_Clicked_Once(object sender, EventArgs e)
         {
 
         }
-        public void DisplayTwo()
+
+        public void Button_Clicked_Twice(object sender, EventArgs e)
         {
 
         }
