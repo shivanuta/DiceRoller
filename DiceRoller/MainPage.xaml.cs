@@ -14,5 +14,14 @@ namespace DiceRoller
         {
             InitializeComponent();
         }
+
+        public void DisplayOne()
+        {
+
+        }
+        public void DisplayTwo()
+        {
+
+        }
     }
 }

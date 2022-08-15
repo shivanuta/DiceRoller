@@ -13,6 +13,7 @@
             <RadioButton Content="d12"/>
             <RadioButton Content="d20"/>
         </StackLayout>
+       
     </StackLayout>
 
 </ContentPage>

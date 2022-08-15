@@ -45,5 +45,66 @@ namespace UITest
             Assert.IsTrue(app.Query(c => c.Marked("d12")).Any());
             Assert.IsTrue(app.Query(c => c.Marked("d20")).Any());
         }
+        [Test]
+        [Category("UI")]
+        public void OptionCanBeChecked()
+        {
+            app.Tap(c => c.Marked("d4"));
+
+            Assert.IsTrue(app.Query(c =>
+            c.Marked("d4")// look for items marked d4
+            .Invoke("isChecked"))// call the isChecked method of the RadioButton
+            .FirstOrDefault()//get the first result (there should only be one)
+            .Equals(true));// check that the view is checked (isChecked = true)
+        
+        
+            app.Tap(c => c.Marked("d6"));
+
+            Assert.IsTrue(app.Query(c =>
+            c.Marked("d6")// look for items marked d6
+            .Invoke("isChecked"))// call the isChecked method of the RadioButton
+            .FirstOrDefault()//get the first result (there should only be one)
+            .Equals(true));// check that the view is checked (isChecked = true)
+
+            app.Tap(c => c.Marked("d8"));
+
+            Assert.IsTrue(app.Query(c =>
+            c.Marked("d8")// look for items marked d8
+            .Invoke("isChecked"))// call the isChecked method of the RadioButton
+            .FirstOrDefault()//get the first result (there should only be one)
+            .Equals(true));// check that the view is checked (isChecked = true)
+
+            app.Tap(c => c.Marked("d10"));
+
+            Assert.IsTrue(app.Query(c =>
+            c.Marked("d10")// look for items marked d10
+            .Invoke("isChecked"))// call the isChecked method of the RadioButton
+            .FirstOrDefault()//get the first result (there should only be one)
+            .Equals(true));// check that the view is checked (isChecked = true)
+
+            app.Tap(c => c.Marked("d12"));
+
+            Assert.IsTrue(app.Query(c =>
+            c.Marked("d12")// look for items marked d12
+            .Invoke("isChecked"))// call the isChecked method of the RadioButton
+            .FirstOrDefault()//get the first result (there should only be one)
+            .Equals(true));// check that the view is checked (isChecked = true)
+
+            app.Tap(c => c.Marked("d20"));
+
+            Assert.IsTrue(app.Query(c =>
+            c.Marked("d20")// look for items marked d20
+            .Invoke("isChecked"))// call the isChecked method of the RadioButton
+            .FirstOrDefault()//get the first result (there should only be one)
+            .Equals(true));// check that the view is checked (isChecked = true)
+        }
+        [Test]
+        [Category("UI")]
+        public void RollButtonAreDisplayed()
+        {
+            AppResult[] results = app.Query(c => c.Class("UIButton").Property("text").Like("Display * results*"));
+
+            Assert.IsTrue(results.Length == 2);
+        }
     }
 }

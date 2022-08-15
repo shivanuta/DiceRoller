@@ -10,13 +10,14 @@ namespace DieTests
     {
         private Die def = new Die();
         [TestMethod]
+        [TestCategory("Defaults")]
         public void DieNotNull()
         {
-            Die d = new Die();
-            d.Should().NotBeNull();
+            def.Should().NotBeNull();
         }
 
         [TestMethod]
+        [TestCategory("Defaults")]
         public void DieHasDefaultValues()
         {
             /*
@@ -24,11 +25,12 @@ namespace DieTests
              * name:....d6
              /* numsides:.....6 
             */
-            def.Name.Should().Be("d6");
-            def.NumSides.Should().Be(6);
-            def.CurrentSide.Should().BeInRange(1, 6);
+            def.GetName().Should().Be("d6");
+            def.GetNumSides().Should().Be(6);
+            def.GetCurrentSide().Should().BeInRange(1, 6);
         }
         [TestMethod]
+        [TestCategory("CustomSides")]
         [DataRow(3, "d3")]
         [DataRow(4, "d4")]
         [DataRow(8, "d8")]
@@ -38,11 +40,12 @@ namespace DieTests
         public void DieHasCustomSides(int sides, string name)
         {
             Die d = new Die(sides);
-            d.Name.Should().Be(name);
-            d.NumSides.Should().Be(sides);
-            d.CurrentSide.Should().BeInRange(1, sides);
+            d.GetName().Should().Be(name);
+            d.GetNumSides().Should().Be(sides);
+            d.GetCurrentSide().Should().BeInRange(1, sides);
         }
         [TestMethod]
+        [TestCategory("CustomSides")]
         [DataRow(3)]
         [DataRow(4)]
         [DataRow(8)]
@@ -55,10 +58,11 @@ namespace DieTests
             for (int i = 0; i < 1000; i++)
             {
                 d.Roll();
-                d.CurrentSide.Should().BeInRange(1, sides);
+                d.GetCurrentSide().Should().BeInRange(1, sides);
             }
         }
         [TestMethod]
+        [TestCategory("CustomName")]
         [DataRow("d3", 3)]
         [DataRow("d4", 4)]
         [DataRow("d8", 8)]
@@ -68,12 +72,12 @@ namespace DieTests
         public void DieHasCustomName(string name, int sides)
         {
             Die d = new Die(name, sides);
-            d.Name.Should().Be(name);
-            d.NumSides.Should().Be(sides);
-            d.CurrentSide.Should().BeInRange(1, sides);
-
+            d.GetName().Should().Be(name);
+            d.GetNumSides().Should().Be(sides);
+            d.GetCurrentSide().Should().BeInRange(1, sides);
         }
         [TestMethod]
+        [TestCategory("CustomSides")]
         [DataRow(3, 2)]
         [DataRow(4, 2)]
         [DataRow(8, 2)]
@@ -83,10 +87,11 @@ namespace DieTests
         public void SetSideUpChangesSide(int sides, int newSide)
         {
             Die d = new Die(sides);
-            d.SetSide(newSide);
-            d.CurrentSide.Should().Be(newSide);
+            d.SetSideUp(newSide);
+            d.GetCurrentSide().Should().Be(newSide);
         }
         [TestMethod]
+        [TestCategory("SetMethods")]
         [DataRow(3, 2)]
         [DataRow(4, 2)]
         [DataRow(8, 2)]
@@ -96,11 +101,13 @@ namespace DieTests
         public void SetSideUpSetsValidSide(int sides, int newSide)
         {
             Die d = new Die(sides);
-            d.SetSide(newSide);
-            d.CurrentSide.Should().BeInRange(1, sides);
+            d.SetSideUp(newSide);
+            d.GetCurrentSide().Should().BeInRange(1, sides);
+            if (newSide >= 1 && newSide <= sides)
+                d.GetCurrentSide().Should().Be(newSide);
         }
-
         [TestMethod]
+        [TestCategory("CustomSides")]
         [DataRow(3)]
         [DataRow(4)]
         [DataRow(8)]
@@ -110,17 +117,25 @@ namespace DieTests
         public void NumSidesShouldNotBeNegative(int sides)
         {
             Die d = new Die(sides);
-            d.NumSides.Should().BeGreaterThan(0);
+            d.GetNumSides().Should().BeGreaterThan(0);
         }
-
         [TestMethod]
-        public void DefaultRollSetSideCorrectly()
+        [TestCategory("GetMethods")]
+        public void GetDefaultNameReturnsValue()
         {
-            for (int i = 0; i < 1000; i++)
-            {
-                def.Roll();
-                def.CurrentSide.Should().BeInRange(1, 6);
-            }
+            def.GetName().Should().BeOfType<string>();
+            def.GetName().Should().Be("d6");
+        }
+        [TestMethod]
+        [TestCategory("GetMethods")]
+        public void GetDefaultNumSidesReturnsValue()
+        {
+            def.GetNumSides().Should().Be(6);
+        }
+        [TestCategory("GetMethods")]
+        public void GetCurrentSideReturnsValue()
+        {
+            def.GetNumSides().Should().BeInRange(1, 6);
         }
     }
 }
